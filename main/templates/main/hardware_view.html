@@ -1,0 +1,26 @@
+{% extends 'main/base.html' %}
+
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+        <h3>Обраний товар:</h3>
+        {% if hardware %}
+        <div class="alert alert-success mt-2">
+                <h5>{{ hardware.id }}.</h5>
+                <h3><u>{{ hardware.title }}</u></h3>
+                <p><b><i>{{ hardware.author }}</i></b></p>
+                <p><i>{{ hardware.text }}</i></p>
+                <p><b>Випущено:         {{ hardware.published }}</b></p>
+                <p>Кількість :  {{ hardware.count }}</p>
+                <p><b>Зареєстровано:  {{ hardware.created}}</b></p>
+        </div>
+        {% else %}
+                <p>Нажаль, цей товар в нашому каталозі відсутній.</p>
+        {% endif %}
+{% endblock %}
+
+

@@ -1,0 +1,49 @@
+{% extends 'main/base.html' %}
+
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+    <h3>Товари нашого магазину:</h3>
+    <table class="table">
+
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#ID</th>
+                <th scope="col">Назва</th>
+                <th scope="col">Виробник</th>
+                <th scope="col">Опис</th>
+                <th scope="col">Кількість</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% if hardware %}
+        {% for el in hardware%}
+        <tr>
+            <th scope="row">{{ el.id }}</th>
+            <td>{{ el.title }}</td>
+            <td>{{ el.author }}</td>
+            <td>{{ el.text|truncatewords:5 }}</td>
+            <td>{{ el.count }}</td>
+            <td>
+                <a type="button" class="btn btn-light btn-sm"
+                   href="/hardware/{{ el.id }}/view"><img src="https://cdn.iconscout.com/icon/free/png-512/free-view-107-458400.png?f=webp&w=256" width="24" height="24"></a>
+            </td>
+            <td>
+                <a type="button" class="btn btn-light btn-sm"
+                   href="/hardware/{{ el.id }}/edit"><img src="https://cdn.iconscout.com/icon/free/png-512/free-edit-1780339-1517827.png?f=webp&w=256" width="24" height="24"></a>
+            </td>
+            <td>
+                <a type="button" class="btn btn-warning btn-sm"
+                   href="/hardware/{{ el.id }}/delete"><img src="https://cdn.iconscout.com/icon/free/png-512/free-delete-2902143-2411575.png?f=webp&w=256" width="24" height="24"></a>
+            </td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+{% endblock %}
